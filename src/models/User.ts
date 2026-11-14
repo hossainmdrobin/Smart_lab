@@ -30,6 +30,7 @@ const UserSchema = new Schema<IUser>(
       type: String,
       required: [true, "Role is required"],
       enum: ["admin", "editor"],
+      index: true,
     },
     name: {
       type: String,

@@ -102,6 +102,7 @@ const PublicationSchema = new Schema<IPublication>(
       {
         type: Schema.Types.ObjectId,
         ref: "ResearchTheme",
+        index: true,
       },
     ],
     relatedPeople: [

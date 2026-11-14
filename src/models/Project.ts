@@ -36,6 +36,7 @@ const ProjectSchema = new Schema<IProject>(
         type: Schema.Types.ObjectId,
         ref: "ResearchTheme",
         required: true,
+        index: true,
       },
     ],
     status: {
