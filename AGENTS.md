@@ -1,9 +1,62 @@
-<!-- BEGIN:nextjs-agent-rules -->
 
-## This is NOT the Next.js you know
+# Project Instructions
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Project
+Build the Laboratory of Algorithmic Life Sciences website
+according to docs/CLIENT_REQUIREMENTS.md.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+## Technology Stack
+- Next.js App Router
+- TypeScript (strict mode)
+- MongoDB with Mongoose
+- Redux Toolkit
+- RTK Query
+- Tailwind CSS
 
-<!-- END:nextjs-agent-rules -->
+## General Rules
+- Use TypeScript for all application code.
+- Use reusable components.
+- Follow Next.js App Router conventions.
+- Keep business logic separate from UI components.
+- Use server-side code for database operations.
+- Never expose database credentials or secrets.
+- Never fabricate laboratory information.
+- Use clearly identified placeholders for missing content.
+- Follow WCAG 2.2 AA accessibility requirements.
+- Build responsive layouts.
+
+## Database
+- Use Mongoose models.
+- Reuse database connections.
+- Add appropriate indexes.
+- Validate data on the server.
+- Use timestamps where appropriate.
+- Handle database errors consistently.
+
+## Redux and API
+- Use Redux Toolkit for global client state.
+- Use RTK Query for API communication.
+- Avoid unnecessary local/global state duplication.
+- Keep API endpoints organized by feature.
+- Handle loading, success and error states.
+
+## Security
+- Implement role-based access control.
+- Support Admin and Editor roles.
+- Validate all server inputs.
+- Protect administrative routes and API endpoints.
+- Never trust client-side authorization.
+
+## Development Workflow
+- Read relevant documentation before coding.
+- Inspect existing files before modifying them.
+- Plan complex tasks before implementation.
+- Work in small, verifiable steps.
+- Do not modify unrelated files.
+- Run TypeScript checks and linting after changes.
+- Report changed files and test results.
+- Never claim a feature works without verification.
+
+## Important
+Do not start implementing features until the
+architecture and development plan are approved.
