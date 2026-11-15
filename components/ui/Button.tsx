@@ -12,6 +12,8 @@ export default function Button({
   variant = "primary",
   className,
   ariaLabel,
+  disabled,
+  type,
 }: {
   children: ReactNode;
   href?: string;
@@ -19,6 +21,8 @@ export default function Button({
   variant?: ButtonVariant;
   className?: string;
   ariaLabel?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 }) {
   const classes = cn(
     "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C6D8] focus-visible:ring-offset-2",
@@ -40,7 +44,16 @@ export default function Button({
   }
 
   return (
-    <button type="button" onClick={onClick} aria-label={ariaLabel} className={classes}>
+    <button
+      type={type ?? "button"}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      className={cn(
+        classes,
+        disabled ? "opacity-60 cursor-not-allowed" : undefined,
+      )}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
