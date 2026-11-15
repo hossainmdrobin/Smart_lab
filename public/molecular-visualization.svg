@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Molecular visualization placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#13B8A6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#55C6D8" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="900" fill="#F5F8FA"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.35" stroke="#E2E8F0" stroke-width="1">
+    <path d="M0 140H1200"/>
+    <path d="M0 280H1200"/>
+    <path d="M0 420H1200"/>
+    <path d="M0 560H1200"/>
+    <path d="M0 700H1200"/>
+    <path d="M140 0V900"/>
+    <path d="M280 0V900"/>
+    <path d="M420 0V900"/>
+    <path d="M560 0V900"/>
+    <path d="M700 0V900"/>
+    <path d="M840 0V900"/>
+    <path d="M980 0V900"/>
+  </g>
+
+  <!-- Connection lines -->
+  <g fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" opacity="0.9">
+    <path d="M180 420 C 260 350, 360 340, 450 370"/>
+    <path d="M450 370 C 540 400, 610 470, 650 540"/>
+    <path d="M650 540 C 720 670, 860 710, 1020 610"/>
+    <path d="M450 370 C 520 270, 640 230, 740 260"/>
+    <path d="M740 260 C 820 290, 880 350, 900 430"/>
+    <path d="M900 430 C 930 520, 890 610, 810 650"/>
+    <path d="M810 650 C 700 710, 580 680, 520 600"/>
+  </g>
+
+  <!-- Nodes -->
+  <g filter="url(#soft)" opacity="0.95">
+    <g>
+      <circle cx="180" cy="420" r="22" fill="#0E7C7B"/>
+      <circle cx="180" cy="420" r="40" fill="#0E7C7B" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="450" cy="370" r="22" fill="#13B8A6"/>
+      <circle cx="450" cy="370" r="40" fill="#13B8A6" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="650" cy="540" r="22" fill="#55C6D8"/>
+      <circle cx="650" cy="540" r="40" fill="#55C6D8" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="1020" cy="610" r="22" fill="#55C6D8"/>
+      <circle cx="1020" cy="610" r="40" fill="#55C6D8" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="740" cy="260" r="22" fill="#0E7C7B"/>
+      <circle cx="740" cy="260" r="40" fill="#0E7C7B" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="900" cy="430" r="22" fill="#13B8A6"/>
+      <circle cx="900" cy="430" r="40" fill="#13B8A6" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="810" cy="650" r="22" fill="#0E7C7B"/>
+      <circle cx="810" cy="650" r="40" fill="#0E7C7B" opacity="0.08"/>
+    </g>
+    <g>
+      <circle cx="520" cy="600" r="22" fill="#13B8A6"/>
+      <circle cx="520" cy="600" r="40" fill="#13B8A6" opacity="0.08"/>
+    </g>
+  </g>
+
+  <!-- Label -->
+  <g>
+    <rect x="60" y="60" rx="16" ry="16" width="360" height="66" fill="#FFFFFF" opacity="0.9" stroke="#E2E8F0"/>
+    <text x="92" y="102" font-family="Arial" font-size="18" fill="#64748B" font-weight="700">Scientific visualization pending approval</text>
+  </g>
+
+</svg>
