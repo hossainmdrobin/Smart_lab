@@ -1,0 +1,100 @@
+{
+  "wipe": false,
+  "users": [
+    {
+      "email": "admin@example.com",
+      "role": "admin",
+      "name": "CMS Seed Admin",
+      "isActive": true,
+      "password": "replace-me"
+    },
+    {
+      "email": "editor@example.com",
+      "role": "editor",
+      "name": "CMS Seed Editor",
+      "isActive": true,
+      "password": "replace-me"
+    }
+  ],
+  "researchThemes": [
+    {
+      "name": "Computational Drug Design",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 0
+    },
+    {
+      "name": "Density Functional Theory (DFT)",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 1
+    },
+    {
+      "name": "Molecular Docking",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 2
+    },
+    {
+      "name": "Molecular Dynamics Simulation",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 3
+    },
+    {
+      "name": "Network Pharmacology",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "name": "Machine Learning",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "name": "Artificial Intelligence in Drug Discovery",
+      "description": "Content pending. Replace with laboratory-approved description before launch.",
+      "featured": false,
+      "order": 6
+    }
+  ],
+  "people": [
+    {
+      "fullName": "Seed Placeholder - leadership Member",
+      "role": "leadership",
+      "status": "alumni",
+      "bio": "Content pending. Replace with laboratory-approved information before launch.",
+      "email": "seed-placeholder-leadership@example.com",
+      "researchInterests": [
+        "computational-drug-design"
+      ],
+      "order": 0
+    }
+  ],
+  "publications": [
+    {
+      "title": "Seed Placeholder - Computational Drug Design Publication",
+      "authors": ["Seed Placeholder Author"],
+      "journal": "Journal (pending)",
+      "year": 2000,
+      "type": "journal-article",
+      "status": "draft",
+      "researchTags": ["computational-drug-design"],
+      "abstract": "Content pending. Replace with laboratory-approved abstract.",
+      "featured": false
+    }
+  ],
+  "projects": [
+    {
+      "title": "Seed Placeholder - Computational Drug Design Project",
+      "summary": "Content pending. Replace with laboratory-approved project summary.",
+      "researchTheme": ["computational-drug-design"],
+      "status": "draft",
+      "methods": "Content pending. Replace with laboratory-approved methods.",
+      "team": [],
+      "featured": false
+    }
+  ]
+}
