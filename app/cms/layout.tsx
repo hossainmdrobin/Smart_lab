@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 
+import CmsSidebarWrapper from "@/components/cms/CmsSidebarWrapper";
+
 export default function CmsLayout({
   children,
 }: {
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-full bg-[#F5F8FA] text-[#1E293B]">
+    <div className="flex min-h-screen flex-col bg-[#F5F8FA] text-[#1E293B]">
       <a
         href="#cms-main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-[#10243A]"
@@ -21,9 +23,12 @@ export default function CmsLayout({
           </div>
         </div>
       </header>
-      <main id="cms-main" className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6">
-        {children}
-      </main>
+      <div className="flex flex-1">
+        <CmsSidebarWrapper />
+        <main id="cms-main" className="flex-1 px-4 py-8 sm:px-6 lg:px-10">
+          <div className="mx-auto w-full max-w-3xl">{children}</div>
+        </main>
+      </div>
     </div>
   );
 }
