@@ -1,5 +1,18 @@
 import mongoose from "mongoose";
 
+import "@/src/models/User";
+import "@/src/models/Setting";
+import "@/src/models/ResearchTheme";
+import "@/src/models/RefreshSession";
+import "@/src/models/Publication";
+import "@/src/models/Project";
+import "@/src/models/Person";
+import "@/src/models/Opportunity";
+import "@/src/models/News";
+import "@/src/models/Media";
+import "@/src/models/ContactInquiry";
+import "@/src/models/AuthOtpToken";
+
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://Anjana:92430@cluster0-shard-00-00.f0fpp.mongodb.net:27017,cluster0-shard-00-01.f0fpp.mongodb.net:27017,cluster0-shard-00-02.f0fpp.mongodb.net:27017/algolab?ssl=true&replicaSet=atlas-51yo8h-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0";
 
 interface CachedConnection {

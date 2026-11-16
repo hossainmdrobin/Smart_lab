@@ -1,5 +1,7 @@
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 import { requireUser } from "@/src/lib/auth/server";
 
 import Button from "@/components/ui/Button";
