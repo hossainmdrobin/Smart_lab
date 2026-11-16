@@ -62,11 +62,11 @@
   ],
   "people": [
     {
-      "fullName": "Seed Placeholder - leadership Member",
-      "role": "leadership",
-      "status": "alumni",
+      "fullName": "Seed Placeholder - Principal Investigator Member",
+      "role": "principal-investigator",
+      "status": "current",
       "bio": "Content pending. Replace with laboratory-approved information before launch.",
-      "email": "seed-placeholder-leadership@example.com",
+      "email": "seed-placeholder-pi@example.com",
       "researchInterests": [
         "computational-drug-design"
       ],

@@ -58,7 +58,7 @@ Laboratory member profile.
 | Field | Type | Required | Index | Notes |
 |-------|------|----------|-------|-------|
 | fullName | String | Yes | | |
-| role | String | Yes | | Enum: `leadership` \| `research-associate` \| `research-assistant` \| `student-trainee` \| `collaborator` \| `alumni` |
+| role | String | Yes | | Enum: `principal-investigator` \| `senior-research-associate` \| `research-associate` \| `research-assistant` \| `student-trainee` \| `collaborator` \| `alumni` |
 | status | String | Yes | | Enum: `current` \| `alumni` |
 | bio | String | No | | Short biography |
 | researchInterests | [ObjectId] | No | | References ResearchTheme |

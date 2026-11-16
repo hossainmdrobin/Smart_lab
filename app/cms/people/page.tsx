@@ -128,7 +128,8 @@ export default function CmsPeoplePage() {
               onChange={(e) => setForm({ ...form, role: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 text-sm shadow-sm focus:border-[#0E7C7B] focus:ring-[#0E7C7B]"
             >
-              <option value="leadership">Leadership</option>
+              <option value="principal-investigator">Principal Investigator</option>
+              <option value="senior-research-associate">Senior Research Associate</option>
               <option value="research-associate">Research Associate</option>
               <option value="research-assistant">Research Assistant</option>
               <option value="student-trainee">Student / Trainee</option>

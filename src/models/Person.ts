@@ -31,7 +31,8 @@ const PersonSchema = new Schema<IPerson>(
       type: String,
       required: [true, "Role is required"],
       enum: [
-        "leadership",
+        "principal-investigator",
+        "senior-research-associate",
         "research-associate",
         "research-assistant",
         "student-trainee",
