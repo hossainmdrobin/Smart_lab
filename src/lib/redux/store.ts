@@ -8,6 +8,7 @@ import { newsApi } from "@/src/lib/services/rtk/newsApi";
 import { usersApi } from "@/src/lib/services/rtk/usersApi";
 import { settingsApi } from "@/src/lib/services/rtk/settingsApi";
 import { mediaApi } from "@/src/lib/services/rtk/mediaApi";
+import { contactApi } from "@/src/lib/services/rtk/contactApi";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     [usersApi.reducerPath]: usersApi.reducer,
     [settingsApi.reducerPath]: settingsApi.reducer,
     [mediaApi.reducerPath]: mediaApi.reducer,
+    [contactApi.reducerPath]: contactApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -31,7 +33,8 @@ export const store = configureStore({
       newsApi.middleware,
       usersApi.middleware,
       settingsApi.middleware,
-      mediaApi.middleware
+      mediaApi.middleware,
+      contactApi.middleware
     ),
 });
 
