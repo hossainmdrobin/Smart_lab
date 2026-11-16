@@ -30,12 +30,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 function RoleLabel({ role }: { role: string }) {
   const displayMap: Record<string, string> = {
-    leadership: "Leadership",
+    "principal-investigator": "Principal Investigator",
+    "senior-research-associate": "Senior Research Associate",
     "research-associate": "Research Associate",
     "research-assistant": "Research Assistant",
     "student-trainee": "Student & Trainee",
-    collaborator: "Collaborator",
-    alumni: "Alumni",
+    "collaborator": "Collaborator",
+    "alumni": "Alumni",
   };
   const text = displayMap[role] || role.split("-").map((w) => w.slice(0, 1).toUpperCase() + w.slice(1)).join(" ");
   return (

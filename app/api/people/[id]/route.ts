@@ -9,7 +9,8 @@ import { ApiError } from "@/src/lib/auth/api-errors";
 const updatePersonSchema = z.object({
   fullName: z.string().min(1).max(120).optional(),
   role: z.enum([
-    "leadership",
+    "principal-investigator",
+    "senior-research-associate",
     "research-associate",
     "research-assistant",
     "student-trainee",

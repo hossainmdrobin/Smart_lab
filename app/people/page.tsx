@@ -15,12 +15,13 @@ export const metadata: Metadata = {
 
 function RoleLabel({ role }: { role: string }) {
   const displayMap: Record<string, string> = {
-    leadership: "Leadership",
+    "principal-investigator": "Principal Investigator",
+    "senior-research-associate": "Senior Research Associate",
     "research-associate": "Research Associate",
     "research-assistant": "Research Assistant",
     "student-trainee": "Student & Trainee",
-    collaborator: "Collaborator",
-    alumni: "Alumni",
+    "collaborator": "Collaborator",
+    "alumni": "Alumni",
   };
   const text = displayMap[role] || role.split("-").map((w) => w.slice(0, 1).toUpperCase() + w.slice(1)).join(" ");
   return (
@@ -141,7 +142,8 @@ export default async function PeoplePage() {
   const currentMembers = people.filter((p) => p.status === "current");
   const alumniMembers = people.filter((p) => p.status === "alumni");
 
-  const leadership = currentMembers.filter((p) => p.role === "leadership");
+  const principalInvestigators = currentMembers.filter((p) => p.role === "principal-investigator");
+  const seniorResearchAssociates = currentMembers.filter((p) => p.role === "senior-research-associate");
   const researchAssociates = currentMembers.filter((p) => p.role === "research-associate");
   const researchAssistants = currentMembers.filter((p) => p.role === "research-assistant");
   const studentTrainees = currentMembers.filter((p) => p.role === "student-trainee");
@@ -175,13 +177,26 @@ export default async function PeoplePage() {
           </div>
         ) : (
           <div className="space-y-16">
-            {leadership.length > 0 ? (
+            {principalInvestigators.length > 0 ? (
               <section>
                 <h2 className="text-2xl font-bold text-[#10243A] tracking-tight mb-6">
-                  Laboratory Leadership
+                  Principal Investigators
                 </h2>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {leadership.map((person) => (
+                  {principalInvestigators.map((person) => (
+                    <PersonCard key={person.id} person={person} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {seniorResearchAssociates.length > 0 ? (
+              <section>
+                <h2 className="text-2xl font-bold text-[#10243A] tracking-tight mb-6">
+                  Senior Research Associates
+                </h2>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {seniorResearchAssociates.map((person) => (
                     <PersonCard key={person.id} person={person} />
                   ))}
                 </div>

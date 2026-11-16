@@ -91,7 +91,7 @@ All API routes are under `/api/`.
 ```json
 {
   "fullName": "string (required)",
-  "role": "leadership | research-associate | research-assistant | student-trainee | collaborator | alumni (required)",
+  "role": "principal-investigator | senior-research-associate | research-associate | research-assistant | student-trainee | collaborator | alumni (required)",
   "status": "current | alumni (required)",
   "bio": "string (optional)",
   "researchInterests": ["ObjectId (optional)"],

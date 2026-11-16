@@ -8,7 +8,8 @@ import { handleApiError, sendOk } from "@/src/lib/api/handler";
 const personSchema = z.object({
   fullName: z.string().min(1).max(120),
   role: z.enum([
-    "leadership",
+    "principal-investigator",
+    "senior-research-associate",
     "research-associate",
     "research-assistant",
     "student-trainee",
