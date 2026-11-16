@@ -6,6 +6,7 @@ import CmsSidebar from "@/components/cms/CmsSidebar";
 
 const SIDEBAR_ITEMS = [
   { href: "/cms/dashboard", label: "Dashboard" },
+  { href: "/cms/inquiries", label: "Contact Inquiries" },
   { href: "/cms/people", label: "People" },
   { href: "/cms/publications", label: "Publications" },
   { href: "/cms/projects", label: "Projects" },
