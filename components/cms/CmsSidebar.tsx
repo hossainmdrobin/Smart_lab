@@ -1,9 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/src/lib/redux/hooks";
+import { setMobileSidebarOpen, toggleMobileSidebar } from "@/src/lib/redux/slices/uiSlice";
 
 interface SidebarItem {
   href: string;
@@ -16,14 +18,15 @@ interface CmsSidebarProps {
 
 export default function CmsSidebar({ items }: CmsSidebarProps) {
   const pathname = usePathname();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const drawerOpen = useAppSelector((state) => state.ui.mobileSidebarOpen);
   const drawerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const closeDrawer = useCallback(() => {
-    setDrawerOpen(false);
+    dispatch(setMobileSidebarOpen(false));
     triggerRef.current?.focus();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (!drawerOpen) return;
@@ -42,21 +45,21 @@ export default function CmsSidebar({ items }: CmsSidebarProps) {
     (e: ReactMouseEvent<HTMLAnchorElement>) => {
       const href = e.currentTarget.getAttribute("href");
       if (href && href !== pathname) {
-        setDrawerOpen(false);
+        dispatch(setMobileSidebarOpen(false));
       }
     },
-    [pathname],
+    [pathname, dispatch],
   );
 
   return (
     <>
-      {/* Mobile trigger */}
+      {/* Mobile floating trigger */}
       <button
         ref={triggerRef}
         type="button"
-        onClick={() => setDrawerOpen(true)}
+        onClick={() => dispatch(toggleMobileSidebar())}
         className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#10243A] text-white shadow-lg lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C6D8] focus-visible:ring-offset-2"
-        aria-label="Open navigation menu"
+        aria-label={drawerOpen ? "Hide navigation menu" : "Show navigation menu"}
         aria-expanded={drawerOpen}
         aria-controls="cms-mobile-drawer"
       >
@@ -69,11 +72,19 @@ export default function CmsSidebar({ items }: CmsSidebarProps) {
           className="h-6 w-6"
           aria-hidden="true"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
+          {drawerOpen ? (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          )}
         </svg>
       </button>
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import CmsSidebarWrapper from "@/components/cms/CmsSidebarWrapper";
+import CmsHeaderToggle from "@/components/cms/CmsHeaderToggle";
 import StoreProvider from "@/src/lib/redux/StoreProvider";
 
 export default function CmsLayout({
@@ -19,9 +20,12 @@ export default function CmsLayout({
         </a>
         <header className="border-b border-[#E2E8F0] bg-white/80 backdrop-blur">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-            <div>
-              <div className="text-sm font-bold text-[#10243A]">CMS</div>
-              <div className="text-[12px] text-[#64748B]">Laboratory of Algorithmic Life Sciences</div>
+            <div className="flex items-center gap-3">
+              <CmsHeaderToggle />
+              <div>
+                <div className="text-sm font-bold text-[#10243A]">CMS</div>
+                <div className="text-[12px] text-[#64748B]">Laboratory of Algorithmic Life Sciences</div>
+              </div>
             </div>
           </div>
         </header>

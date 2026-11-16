@@ -9,9 +9,11 @@ import { usersApi } from "@/src/lib/services/rtk/usersApi";
 import { settingsApi } from "@/src/lib/services/rtk/settingsApi";
 import { mediaApi } from "@/src/lib/services/rtk/mediaApi";
 import { contactApi } from "@/src/lib/services/rtk/contactApi";
+import uiReducer from "@/src/lib/redux/slices/uiSlice";
 
 export const store = configureStore({
   reducer: {
+    ui: uiReducer,
     [peopleApi.reducerPath]: peopleApi.reducer,
     [publicationsApi.reducerPath]: publicationsApi.reducer,
     [projectsApi.reducerPath]: projectsApi.reducer,
