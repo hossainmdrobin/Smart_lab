@@ -2,26 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/components/ui/cn";
 
 const NAV_ITEMS: Array<{ label: string; href: string; key: string }> = [
-  { label: "Home", href: "/#home", key: "home" },
-  { label: "About", href: "/#about", key: "about" },
-  { label: "Research", href: "/#research", key: "research" },
-  { label: "People", href: "/#people", key: "people" },
-  {
-    label: "Publications",
-    href: "/#publications",
-    key: "publications",
-  },
-  {
-    label: "Opportunities",
-    href: "/#contact",
-    key: "opportunities",
-  },
-  { label: "Contact", href: "/#contact", key: "contact" },
+  { label: "Home", href: "/", key: "home" },
+  { label: "About", href: "/about", key: "about" },
+  { label: "Research", href: "/research", key: "research" },
+  { label: "People", href: "/people", key: "people" },
+  { label: "Publications", href: "/publications", key: "publications" },
+  { label: "Contact", href: "/contact", key: "contact" },
 ];
 
 function useLockBodyScroll(locked: boolean) {
@@ -41,51 +32,7 @@ export default function SiteHeader() {
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  const [activeKey, setActiveKey] = useState<string>("home");
-
   useLockBodyScroll(open);
-
-  useEffect(() => {
-    if (pathname !== "/") return;
-    const idsByKey: Record<string, string> = {
-      home: "home",
-      about: "about",
-      research: "research",
-      people: "people",
-      publications: "publications",
-      contact: "contact",
-      opportunities: "contact",
-    };
-
-    const entries = Object.entries(idsByKey)
-      .map(([key, id]) => ({ key, id }))
-      .filter(({ id }) => Boolean(document.getElementById(id)));
-
-    if (!entries.length) return;
-
-    const observer = new IntersectionObserver(
-      (obsEntries) => {
-        const visible = obsEntries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
-
-        if (visible[0]?.target) {
-          const targetId = (visible[0].target as HTMLElement).id;
-          const found = entries.find((x) => x.id === targetId);
-          if (found) setActiveKey(found.key);
-        }
-      },
-      { root: null, threshold: [0.2, 0.35, 0.5, 0.75] },
-    );
-
-    for (const { id } of entries) {
-      observer.observe(document.getElementById(id)!);
-    }
-
-    return () => observer.disconnect();
-  }, [pathname]);
-
-  const activeKeyMemo = useMemo(() => activeKey, [activeKey]);
 
   useEffect(() => {
     if (!open) return;
@@ -147,7 +94,10 @@ export default function SiteHeader() {
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
           {NAV_ITEMS.map((item) => {
-            const isActive = item.key === activeKey;
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.key}
@@ -210,8 +160,9 @@ export default function SiteHeader() {
             <nav className="mt-4 flex flex-col gap-3" aria-label="Main">
               {NAV_ITEMS.map((item) => {
                 const isActive =
-                  item.key === activeKeyMemo ||
-                  (item.key === "opportunities" && activeKeyMemo === "contact");
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname === item.href || pathname.startsWith(item.href + "/");
                 return (
                   <Link
                     key={item.key}
@@ -223,7 +174,6 @@ export default function SiteHeader() {
                     )}
                     onClick={() => {
                       setOpen(false);
-                      setActiveKey(item.key);
                     }}
                   >
                     {item.label}
