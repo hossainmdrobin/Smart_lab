@@ -8,6 +8,7 @@ import {
   useDeletePersonMutation,
 } from "@/src/lib/services/rtk/peopleApi";
 import Card from "@/components/ui/Card";
+import ImageUploadField from "@/components/cms/ImageUploadField";
 
 export default function CmsPeoplePage() {
   const { data: people = [], isLoading, error } = useGetPeopleQuery();
@@ -28,7 +29,10 @@ export default function CmsPeoplePage() {
     github: "",
     personalWebsite: "",
     order: 0,
+    photo: "",
+    cv: "",
   });
+  const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -53,7 +57,10 @@ export default function CmsPeoplePage() {
         github: "",
         personalWebsite: "",
         order: 0,
+        photo: "",
+        cv: "",
       });
+      setPhotoUrl(null);
     } catch (err: unknown) {
       const errMsg = (err as { data?: { error?: { message?: string } } })?.data?.error?.message || "Failed to save person";
       setErrorMsg(errMsg);
@@ -62,6 +69,7 @@ export default function CmsPeoplePage() {
 
   function handleEdit(person: Record<string, unknown>) {
     setIsEditing(person._id as string);
+    const photoObj = person.photo as { _id?: string; url?: string } | undefined;
     setForm({
       fullName: (person.fullName as string) || "",
       role: (person.role as string) || "research-associate",
@@ -74,7 +82,10 @@ export default function CmsPeoplePage() {
       github: (person.github as string) || "",
       personalWebsite: (person.personalWebsite as string) || "",
       order: (person.order as number) || 0,
+      photo: photoObj?._id || (typeof person.photo === "string" ? person.photo : ""),
+      cv: "",
     });
+    setPhotoUrl(photoObj?.url || null);
   }
 
   async function handleDelete(id: string) {
@@ -170,6 +181,18 @@ export default function CmsPeoplePage() {
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 text-sm shadow-sm focus:border-[#0E7C7B] focus:ring-[#0E7C7B]"
             />
           </div>
+          <div className="sm:col-span-2">
+            <ImageUploadField
+              label="Profile Photo"
+              value={form.photo}
+              previewUrl={photoUrl || undefined}
+              onChange={(mediaId, url) => {
+                setForm({ ...form, photo: mediaId });
+                setPhotoUrl(url);
+              }}
+              helperText="Upload profile photo (JPEG, PNG, WebP up to 5MB)"
+            />
+          </div>
           <div className="sm:col-span-2 flex gap-3">
             <button
               type="submit"
@@ -194,7 +217,10 @@ export default function CmsPeoplePage() {
                     github: "",
                     personalWebsite: "",
                     order: 0,
+                    photo: "",
+                    cv: "",
                   });
+                  setPhotoUrl(null);
                 }}
                 className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300"
               >
