@@ -104,9 +104,8 @@ export default function CmsSidebar({ items }: CmsSidebarProps) {
         role="dialog"
         aria-modal="true"
         aria-label="CMS navigation"
-        className={`fixed inset-y-0 left-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-200 ease-in-out lg:hidden ${
-          drawerOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-y-0 left-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-200 ease-in-out lg:hidden ${drawerOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between border-b border-[#E2E8F0] px-4 py-4">
           <span className="text-sm font-bold text-[#10243A]">CMS</span>
@@ -164,11 +163,10 @@ function NavList({
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 onClick={onNavigate}
-                className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C6D8] ${
-                  isActive
+                className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C6D8] ${isActive
                     ? "bg-[#F0FDFA] text-[#0E7C7B] border-l-2 border-[#0E7C7B]"
                     : "text-[#1E293B] hover:bg-[#F1F5F9] hover:text-[#10243A]"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>

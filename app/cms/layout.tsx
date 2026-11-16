@@ -29,10 +29,11 @@ export default function CmsLayout({
             </div>
           </div>
         </header>
-        <div className="flex flex-1">
+        <div className="flex flex-1 w-screen">
           <CmsSidebarWrapper />
-          <main id="cms-main" className="flex-1 px-4 py-8 sm:px-6 lg:px-10">
-            <div className="mx-auto w-full max-w-5xl">{children}</div>
+          <main id="cms-main" className="flex-1 md:w-[calc(100vw-16rem)] overflow-x-auto md:px-4 py-8 sm:px-6 lg:px-10">
+            {children}
+            {/* <div className=" bg-gray-400">{children}</div> */}
           </main>
         </div>
       </div>
