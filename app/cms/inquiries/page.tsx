@@ -46,67 +46,70 @@ export default function CmsInquiriesPage() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold text-[#10243A]">Contact Inquiries</h1>
-      {errorMsg && <div className="rounded bg-red-50 p-3 text-sm text-red-700">{errorMsg}</div>}
+    <div className="flex flex-col gap-4 sm:gap-6">
+      <h1 className="text-xl sm:text-2xl font-bold text-[#10243A]">Contact Inquiries</h1>
+      {errorMsg && <div className="rounded bg-red-50 p-3 text-xs sm:text-sm text-red-700">{errorMsg}</div>}
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <Card className="p-5">
-            <h2 className="text-lg font-semibold text-[#10243A] mb-4">Inquiries List</h2>
+          <Card className="p-4 sm:p-5">
+            <h2 className="text-base sm:text-lg font-semibold text-[#10243A] mb-3 sm:mb-4">Inquiries List</h2>
             {isLoading ? (
-              <p className="text-sm text-gray-500">Loading...</p>
+              <p className="text-xs sm:text-sm text-gray-500">Loading...</p>
             ) : inquiries.length === 0 ? (
-              <p className="text-sm text-gray-500">No contact inquiries found.</p>
+              <p className="text-xs sm:text-sm text-gray-500">No contact inquiries found.</p>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200 text-left text-sm">
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <table className="min-w-full divide-y divide-gray-200 text-left text-xs sm:text-sm">
                   <thead className="bg-gray-50 text-gray-700 font-semibold">
                     <tr>
-                      <th className="p-3">Status</th>
-                      <th className="p-3">Sender</th>
-                      <th className="p-3">Subject</th>
-                      <th className="p-3">Received</th>
-                      <th className="p-3 text-right">Actions</th>
+                      <th className="p-2 sm:p-3">Status</th>
+                      <th className="p-2 sm:p-3">Sender</th>
+                      <th className="p-2 sm:p-3">Subject</th>
+                      <th className="p-2 sm:p-3">Received</th>
+                      <th className="p-2 sm:p-3 text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {inquiries.map((inq) => {
                       const isRead = Boolean(inq.isRead);
                       const id = String(inq._id);
+                      const isSelected = selectedInquiry && selectedInquiry._id === id;
                       return (
                         <tr
                           key={id}
-                          className={`hover:bg-gray-50 cursor-pointer ${!isRead ? "bg-blue-50/50 font-semibold" : ""}`}
+                          className={`hover:bg-gray-50 cursor-pointer ${
+                            !isRead ? "bg-blue-50/50 font-semibold" : ""
+                          } ${isSelected ? "bg-blue-100/60" : ""}`}
                           onClick={() => setSelectedInquiry(inq)}
                         >
-                          <td className="p-3">
+                          <td className="p-2 sm:p-3 whitespace-nowrap">
                             <span
-                              className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${
+                              className={`inline-flex rounded-full px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold ${
                                 isRead ? "bg-gray-100 text-gray-800" : "bg-[#0E7C7B]/10 text-[#0E7C7B]"
                               }`}
                             >
                               {isRead ? "Read" : "Unread"}
                             </span>
                           </td>
-                          <td className="p-3">
-                            <div className="text-gray-900">{String(inq.name)}</div>
-                            <div className="text-xs text-gray-500">{String(inq.email)}</div>
+                          <td className="p-2 sm:p-3 max-w-[150px] sm:max-w-xs truncate">
+                            <div className="text-gray-900 truncate">{String(inq.name)}</div>
+                            <div className="text-[10px] sm:text-xs text-gray-500 truncate">{String(inq.email)}</div>
                           </td>
-                          <td className="p-3 text-gray-800 max-w-xs truncate">{String(inq.subject)}</td>
-                          <td className="p-3 text-xs text-gray-500">
+                          <td className="p-2 sm:p-3 text-gray-800 max-w-[150px] sm:max-w-xs truncate">{String(inq.subject)}</td>
+                          <td className="p-2 sm:p-3 text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">
                             {inq.receivedAt ? new Date(String(inq.receivedAt)).toLocaleString() : "—"}
                           </td>
-                          <td className="p-3 text-right space-x-2" onClick={(e) => e.stopPropagation()}>
+                          <td className="p-2 sm:p-3 text-right space-x-1 sm:space-x-2 whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
                             <button
                               onClick={() => handleToggleRead(id, isRead)}
-                              className="text-[#0E7C7B] hover:underline text-xs"
+                              className="text-[#0E7C7B] hover:underline text-[10px] sm:text-xs"
                             >
-                              {isRead ? "Mark Unread" : "Mark Read"}
+                              {isRead ? "Unread" : "Read"}
                             </button>
                             <button
                               onClick={() => handleDelete(id)}
-                              className="text-red-600 hover:underline text-xs"
+                              className="text-red-600 hover:underline text-[10px] sm:text-xs"
                             >
                               Delete
                             </button>
@@ -122,16 +125,27 @@ export default function CmsInquiriesPage() {
         </div>
 
         <div>
-          <Card className="p-5 sticky top-6">
-            <h2 className="text-lg font-semibold text-[#10243A] mb-4">Inquiry Details</h2>
+          <Card className="p-4 sm:p-5 lg:sticky lg:top-6">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <h2 className="text-base sm:text-lg font-semibold text-[#10243A]">Inquiry Details</h2>
+              {selectedInquiry && (
+                <button
+                  onClick={() => setSelectedInquiry(null)}
+                  className="text-xs text-gray-500 hover:text-gray-700 lg:hidden"
+                  aria-label="Close details"
+                >
+                  Close &times;
+                </button>
+              )}
+            </div>
             {selectedInquiry ? (
-              <div className="flex flex-col gap-3 text-sm">
+              <div className="flex flex-col gap-2.5 sm:gap-3 text-xs sm:text-sm">
                 <div>
                   <span className="font-semibold text-gray-700">Name:</span> {String(selectedInquiry.name)}
                 </div>
                 <div>
                   <span className="font-semibold text-gray-700">Email:</span>{" "}
-                  <a href={`mailto:${selectedInquiry.email}`} className="text-[#0E7C7B] hover:underline">
+                  <a href={`mailto:${selectedInquiry.email}`} className="text-[#0E7C7B] hover:underline break-all">
                     {String(selectedInquiry.email)}
                   </a>
                 </div>
@@ -154,11 +168,11 @@ export default function CmsInquiriesPage() {
                 ) : null}
                 <div className="mt-2">
                   <span className="font-semibold text-gray-700 block mb-1">Message:</span>
-                  <div className="rounded-md bg-gray-50 p-3 text-gray-800 whitespace-pre-wrap border border-gray-200">
+                  <div className="rounded-md bg-gray-50 p-3 text-gray-800 whitespace-pre-wrap border border-gray-200 text-xs sm:text-sm">
                     {String(selectedInquiry.message)}
                   </div>
                 </div>
-                <div className="mt-4 flex gap-2">
+                <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                   <button
                     onClick={() => handleToggleRead(String(selectedInquiry._id), Boolean(selectedInquiry.isRead))}
                     className="rounded-md bg-[#0E7C7B] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#0b6564]"
@@ -174,7 +188,7 @@ export default function CmsInquiriesPage() {
                 </div>
               </div>
             ) : (
-              <p className="text-sm text-gray-500">Select an inquiry from the list to view full details.</p>
+              <p className="text-xs sm:text-sm text-gray-500">Select an inquiry from the list to view full details.</p>
             )}
           </Card>
         </div>
