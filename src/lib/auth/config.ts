@@ -2,7 +2,7 @@ export const authConfig = {
   accessSecret: process.env.AUTH_ACCESS_TOKEN_SECRET ??
     process.env.AUTH_JWT_SECRET,
   refreshSecret: process.env.AUTH_REFRESH_TOKEN_SECRET ?? process.env.AUTH_JWT_SECRET,
-  accessTtlSeconds: Number(process.env.AUTH_ACCESS_TOKEN_TTL_SECONDS ?? 60 * 15),
+  accessTtlSeconds: Number(process.env.AUTH_ACCESS_TOKEN_TTL_SECONDS ?? 60 * 60),
   refreshTtlSeconds: Number(process.env.AUTH_REFRESH_TOKEN_TTL_SECONDS ?? 60 * 60 * 24 * 7),
   cookieSecure: process.env.NODE_ENV === "production",
   cookieSameSite: (process.env.AUTH_COOKIE_SAMESITE as "lax" | "strict" | "none") ?? "lax",
