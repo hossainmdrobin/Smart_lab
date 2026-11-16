@@ -11,14 +11,14 @@ export default function CmsLayout({
 }) {
   return (
     <StoreProvider>
-      <div className="flex min-h-screen flex-col bg-[#F5F8FA] text-[#1E293B]">
+      <div className="h-screen flex flex-col overflow-hidden bg-[#F5F8FA] text-[#1E293B]">
         <a
           href="#cms-main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-[#10243A]"
         >
           Skip to content
         </a>
-        <header className="border-b border-[#E2E8F0] bg-white/80 backdrop-blur">
+        <header className="shrink-0 border-b border-[#E2E8F0] bg-white/80 backdrop-blur">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
             <div className="flex items-center gap-3">
               <CmsHeaderToggle />
@@ -29,9 +29,9 @@ export default function CmsLayout({
             </div>
           </div>
         </header>
-        <div className="flex flex-1 w-screen">
+        <div className="flex flex-1 overflow-hidden">
           <CmsSidebarWrapper />
-          <main id="cms-main" className="flex-1 md:w-[calc(100vw-16rem)] overflow-x-auto md:px-4 py-8 sm:px-6 lg:px-10">
+          <main id="cms-main" className="flex-1 min-w-0 overflow-y-auto overflow-x-auto md:px-4 py-8 sm:px-6 lg:px-10">
             {children}
             {/* <div className=" bg-gray-400">{children}</div> */}
           </main>

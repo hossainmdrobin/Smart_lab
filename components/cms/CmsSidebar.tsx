@@ -136,7 +136,7 @@ export default function CmsSidebar({ items }: CmsSidebarProps) {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 border-r border-[#E2E8F0] bg-white lg:block">
+      <aside className="hidden w-64 shrink-0 h-full overflow-y-auto border-r border-[#E2E8F0] bg-white lg:block">
         <NavList items={items} pathname={pathname} />
       </aside>
     </>
