@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { z } from "zod";
 import { dbConnect } from "@/src/lib/db/connect";
 import { ContactInquiry } from "@/src/models/ContactInquiry";
+import { requireUser } from "@/src/lib/auth/server";
 import { handleApiError, sendOk } from "@/src/lib/api/handler";
 import { checkRateLimit, getClientIpFromHeaders } from "@/src/lib/auth/rate-limit";
 
@@ -12,6 +13,17 @@ const contactSchema = z.object({
   subject: z.string().min(1, "Subject is required").max(300, "Subject cannot exceed 300 characters"),
   message: z.string().min(1, "Message is required").max(10000, "Message cannot exceed 10000 characters"),
 });
+
+export async function GET() {
+  try {
+    await requireUser({ allowedRoles: ["admin", "editor"] });
+    await dbConnect();
+    const inquiries = await ContactInquiry.find().sort({ receivedAt: -1 }).lean().exec();
+    return sendOk(inquiries);
+  } catch (err) {
+    return handleApiError(err);
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
