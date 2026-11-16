@@ -60,7 +60,11 @@ export async function PUT(
     const body = await req.json();
     const data = updatePublicationSchema.parse(body);
 
-    const updatePayload: Record<string, unknown> = { ...data };
+    const updatePayload: Record<string, unknown> = {
+      ...data,
+      ...(data.figure !== undefined ? { figure: data.figure === "" ? undefined : data.figure } : {}),
+      ...(data.relatedProject !== undefined ? { relatedProject: data.relatedProject === "" ? undefined : data.relatedProject } : {}),
+    };
     if (data.featured === true) {
       updatePayload.featuredAt = new Date();
     } else if (data.featured === false) {

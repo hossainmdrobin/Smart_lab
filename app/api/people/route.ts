@@ -60,7 +60,13 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const data = personSchema.parse(body);
 
-    const person = await Person.create(data);
+    const cleanData = {
+      ...data,
+      photo: data.photo === "" ? undefined : data.photo,
+      cv: data.cv === "" ? undefined : data.cv,
+    };
+
+    const person = await Person.create(cleanData);
     return sendOk(person, undefined, 201);
   } catch (err) {
     return handleApiError(err);

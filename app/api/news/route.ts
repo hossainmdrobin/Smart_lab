@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
 
     const news = await News.create({
       ...data,
+      image: data.image === "" ? undefined : data.image,
       publishedAt: new Date(data.publishedAt),
     });
     return sendOk(news, undefined, 201);

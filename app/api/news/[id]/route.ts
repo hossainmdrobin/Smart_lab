@@ -45,7 +45,10 @@ export async function PUT(
     const body = await req.json();
     const data = updateNewsSchema.parse(body);
 
-    const updatePayload: Record<string, unknown> = { ...data };
+    const updatePayload: Record<string, unknown> = {
+      ...data,
+      ...(data.image !== undefined ? { image: data.image === "" ? undefined : data.image } : {}),
+    };
     if (data.publishedAt) {
       updatePayload.publishedAt = new Date(data.publishedAt);
     }

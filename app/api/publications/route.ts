@@ -58,7 +58,11 @@ export async function POST(req: NextRequest) {
     await dbConnect();
     const body = await req.json();
     const data = publicationSchema.parse(body);
-    const payload: Record<string, unknown> = { ...data };
+    const payload: Record<string, unknown> = {
+      ...data,
+      figure: data.figure === "" ? undefined : data.figure,
+      relatedProject: data.relatedProject === "" ? undefined : data.relatedProject,
+    };
     if (data.featured) {
       payload.featuredAt = new Date();
     }

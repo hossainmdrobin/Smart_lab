@@ -63,7 +63,13 @@ export async function PUT(
     const body = await req.json();
     const data = updatePersonSchema.parse(body);
 
-    const person = await Person.findByIdAndUpdate(id, data, {
+    const cleanData = {
+      ...data,
+      ...(data.photo !== undefined ? { photo: data.photo === "" ? undefined : data.photo } : {}),
+      ...(data.cv !== undefined ? { cv: data.cv === "" ? undefined : data.cv } : {}),
+    };
+
+    const person = await Person.findByIdAndUpdate(id, cleanData, {
       new: true,
       runValidators: true,
     })

@@ -53,7 +53,12 @@ export async function PUT(
     const body = await req.json();
     const data = updateProjectSchema.parse(body);
 
-    const project = await Project.findByIdAndUpdate(id, data, {
+    const cleanData = {
+      ...data,
+      ...(data.image !== undefined ? { image: data.image === "" ? undefined : data.image } : {}),
+    };
+
+    const project = await Project.findByIdAndUpdate(id, cleanData, {
       new: true,
       runValidators: true,
     })

@@ -50,7 +50,12 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const data = projectSchema.parse(body);
 
-    const project = await Project.create(data);
+    const cleanData = {
+      ...data,
+      image: data.image === "" ? undefined : data.image,
+    };
+
+    const project = await Project.create(cleanData);
     return sendOk(project, undefined, 201);
   } catch (err) {
     return handleApiError(err);
