@@ -7,6 +7,7 @@ export const projectsApi = createApi({
   endpoints: (builder) => ({
     getProjects: builder.query<Array<Record<string, unknown>>, void>({
       query: () => "/projects",
+      transformResponse: (response: { data: Array<Record<string, unknown>> }) => response.data,
       providesTags: ["Projects"],
     }),
     createProject: builder.mutation<Record<string, unknown>, Record<string, unknown>>({
@@ -15,6 +16,7 @@ export const projectsApi = createApi({
         method: "POST",
         body,
       }),
+      transformResponse: (response: { data: Record<string, unknown> }) => response.data,
       invalidatesTags: ["Projects"],
     }),
     updateProject: builder.mutation<Record<string, unknown>, { id: string; data: Record<string, unknown> }>({
@@ -23,6 +25,7 @@ export const projectsApi = createApi({
         method: "PUT",
         body: data,
       }),
+      transformResponse: (response: { data: Record<string, unknown> }) => response.data,
       invalidatesTags: ["Projects"],
     }),
     deleteProject: builder.mutation<Record<string, unknown>, string>({
@@ -30,6 +33,7 @@ export const projectsApi = createApi({
         url: `/projects/${id}`,
         method: "DELETE",
       }),
+      transformResponse: (response: { data: Record<string, unknown> }) => response.data,
       invalidatesTags: ["Projects"],
     }),
   }),

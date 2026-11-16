@@ -7,6 +7,7 @@ export const mediaApi = createApi({
   endpoints: (builder) => ({
     getMedia: builder.query<Array<Record<string, unknown>>, void>({
       query: () => "/media",
+      transformResponse: (response: { data: Array<Record<string, unknown>> }) => response.data,
       providesTags: ["Media"],
     }),
     createMedia: builder.mutation<Record<string, unknown>, Record<string, unknown>>({
@@ -15,6 +16,7 @@ export const mediaApi = createApi({
         method: "POST",
         body,
       }),
+      transformResponse: (response: { data: Record<string, unknown> }) => response.data,
       invalidatesTags: ["Media"],
     }),
     updateMedia: builder.mutation<Record<string, unknown>, { id: string; data: Record<string, unknown> }>({
@@ -23,6 +25,7 @@ export const mediaApi = createApi({
         method: "PUT",
         body: data,
       }),
+      transformResponse: (response: { data: Record<string, unknown> }) => response.data,
       invalidatesTags: ["Media"],
     }),
     deleteMedia: builder.mutation<Record<string, unknown>, string>({
@@ -30,6 +33,7 @@ export const mediaApi = createApi({
         url: `/media/${id}`,
         method: "DELETE",
       }),
+      transformResponse: (response: { data: Record<string, unknown> }) => response.data,
       invalidatesTags: ["Media"],
     }),
   }),
