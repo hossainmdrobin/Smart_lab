@@ -4,8 +4,8 @@ import Card from "@/components/ui/Card";
 
 export default function CollaborationSection() {
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6">
-      <Card className="relative overflow-hidden border-0 bg-[#10243A] p-8 text-white">
+    <section className="mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6 text-gray-700/85">
+      <Card className="relative overflow-hidden border-0 bg-[#10243A] p-8">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#0E7C7B]/20" />
         <div className="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-[#55C6D8]/10" />
 
@@ -13,7 +13,7 @@ export default function CollaborationSection() {
           <h2 className="text-3xl font-bold tracking-tight">
             Let’s Advance Research Together
           </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/85">
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed">
             We welcome inquiries about research collaboration in computational
             life sciences and drug discovery.
           </p>

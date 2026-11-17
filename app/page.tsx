@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const homepageData = await getHomepageData();
+  // console.log("Homepage Data",homepageData)
 
   return (
     <div className="min-h-full bg-[#F5F8FA] text-[#1E293B]">
