@@ -29,8 +29,8 @@ const METHODS = [
 
 export default function HeroMethodStrip() {
   return (
-    <div className="mt-10 border-t border-slate-200/80 pt-6">
-      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+    <div className="mt-10 border-t border-slate-700/80 pt-6">
+      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
         Core Research Domains
       </p>
       <nav
@@ -41,7 +41,7 @@ export default function HeroMethodStrip() {
           <Link
             key={method.name}
             href={method.href}
-            className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-medium text-slate-700 shadow-sm transition-colors hover:border-[#0D9488] hover:bg-slate-50 hover:text-[#0D9488] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D9488] focus-visible:ring-offset-2"
+            className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/80 px-3.5 py-1.5 text-xs font-medium text-slate-300 shadow-sm backdrop-blur transition-colors hover:border-[#06B6D4] hover:bg-slate-800 hover:text-[#06B6D4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4] focus-visible:ring-offset-2"
           >
             {method.name}
           </Link>
